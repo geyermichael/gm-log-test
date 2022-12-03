@@ -1,4 +1,5 @@
 name: npm-publish
+run-name: NPM Publish
 on:
   push:
     branches:
@@ -8,8 +9,11 @@ jobs:
     name: npm-publish
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
       uses: actions/checkout@v3
+      uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
     - name: Publish package
       run: npm publish --access public
       env: # More info about the environment variables in the README

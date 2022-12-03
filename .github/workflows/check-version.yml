@@ -1,6 +1,6 @@
 name: check-version
 on:
-  merge:
+  pull_requests:
     branches:
      - main
 jobs:

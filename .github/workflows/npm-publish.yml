@@ -17,7 +17,6 @@ jobs:
         node-version: '16.x'
         registry-url: 'https://registry.npmjs.org'
     - run: npm ci
-    - name: Publish package
-      run: npm publish
+    - run: npm publish
       env: # More info about the environment variables in the README
         NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings

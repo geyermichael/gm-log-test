@@ -8,16 +8,16 @@ jobs:
   npm-publish:
     name: npm-publish
     runs-on: ubuntu-latest
-      steps:
-        - name: ☁ Checkout
-          uses: actions/checkout@v2
-        - name: ⬇ Install npm
-          uses: actions/setup-node@v2
-          with:
-            node-version: 16
-            registry-url: https://registry.npmjs.org/
-        - run: npm ci
-        - name: 👑 Publish npm package
-          run: npm publish --access public
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+    steps:
+      - name: ☁ Checkout
+        uses: actions/checkout@v2
+      - name: ⬇ Install npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - name: 👑 Publish npm package
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

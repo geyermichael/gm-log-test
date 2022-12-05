@@ -25,6 +25,8 @@ jobs:
     name: create-release
     runs-on: ubuntu-latest
     steps:
+      - name: ☁ Checkout
+        uses: actions/checkout@v3
       - name: Get new version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@main

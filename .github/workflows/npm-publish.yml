@@ -23,6 +23,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
   create-release:
     name: create-release
+    runs-on: ubuntu-latest
     steps:
       - name: Get new version
         id: package-version

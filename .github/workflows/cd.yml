@@ -1,5 +1,5 @@
-name: npm-publish
-run-name: NPM Publish
+name: CD
+run-name: Deploy package
 on:
   push:
     branches:

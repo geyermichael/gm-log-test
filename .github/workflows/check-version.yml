@@ -23,7 +23,6 @@ jobs:
           echo "No version change :/"'
           exit: 1
   update:
-  needs: check-version
     runs-on: ubuntu-latest
     steps:
         - name: Checkout code

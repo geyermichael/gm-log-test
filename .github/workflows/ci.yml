@@ -1,0 +1,33 @@
+name: CI
+run-name: Checks on PR in main
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  check-package-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - id: check # This will be the reference for getting the outputs.
+        uses: EndBug/version-check@v2 # You can choose the version/branch you prefer.
+        with:
+          file-url:  https://unpkg.com/gm-log-test/package.json
+          assume-same-version: old
+      - name: Fail if unchanged  
+        if: steps.check.outputs.changed == 'false'
+        run: |
+          echo "No version change :/"'
+          exit: 1
+  check-changelog:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+        - name: Changelog check
+          uses: Zomzog/changelog-checker@v1.2.0
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
